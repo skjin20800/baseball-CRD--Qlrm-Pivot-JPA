@@ -20,7 +20,7 @@ public class PlayerService {
 	private final PlayerRepository playerRepository;
 	private final TeamRepository teamRepository;
 	
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Player> 선수목록(){
 		return playerRepository.findAll();
 	}
@@ -37,13 +37,14 @@ public class PlayerService {
 		}
 	}
 	
-	@Transactional
-	public int 삭제하기(Long id) {		
+	public int 삭제하기(Long id) {
+		
+		
 		playerRepository.deleteById(id);
 		return 1;
 	}
 	
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Long> 팀찾기(){
 		Team lotte = teamRepository.findByTeamName("롯데");
 		Team kia = teamRepository.findByTeamName("기아");

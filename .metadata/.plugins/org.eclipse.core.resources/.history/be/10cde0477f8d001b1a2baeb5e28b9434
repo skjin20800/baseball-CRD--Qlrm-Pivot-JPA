@@ -17,7 +17,7 @@ public class StadiumService {
 	
 	private final StadiumRepository stadiumRepository;
 	
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Stadium> 야구장목록(){
 		return stadiumRepository.findAll();
 	}
@@ -34,7 +34,6 @@ public class StadiumService {
 		}
 	}
 	
-	@Transactional
 	public int 삭제하기(Long id) {
 		stadiumRepository.deleteById(id);
 		return 1;

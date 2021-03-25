@@ -56,14 +56,13 @@ public class PlayerController {
 	
 	@GetMapping("/player/position")
 	public String positionFindAll(Model model){
-		
+		System.out.println("실행됨1");
 		JpaResultMapper jpaResultMapper = new JpaResultMapper();
-		List<Long> teamName = playerService.팀찾기();		
-		
-		List<PositionRespDto> positionRespDto =jpaResultMapper
-				.list(PositionQuery.positionPivot(teamName.get(0),teamName.get(1),teamName.get(2)),
-						PositionRespDto.class);	
-		
+		System.out.println("실행됨2");
+		List<Long> teamName = playerService.팀찾기();
+		System.out.println("실행됨3"+ teamName.get(0) + teamName.get(1) +teamName.get(2) );
+		List<PositionRespDto> positionRespDto = jpaResultMapper.list(PositionQuery.positionPivot(teamName.get(0),teamName.get(1),teamName.get(2)), PositionRespDto.class);
+		System.out.println("실행됨4");
 		model.addAttribute("players", positionRespDto);
 		return "positionList";
 		
