@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+</head>
+<body>
+<div class = " container">
+<h1 class="display-2">야구장 등록</h1>
+<form>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">구장</span>
+    </div>
+    <input type="text" class="form-control" id="stadiumName">
+  </div>
+  <button type="button" class="btn btn-primary" id="btn-stadiumSave">등록</button>
+</form>
+</div>
+
+<script>
+      $("#btn-stadiumSave").on("click", (e)=>{
+	e.preventDefault(); //form태그 action안타게 막아버리는것
+	
+  	let data = {
+  			stadiumName: $("#stadiumName").val(),
+	};
+      
+      $.ajax({
+		type: "POST",
+		url: "/stadium",
+		data: JSON.stringify(data),
+		contentType: "application/json; charset=utf-8",
+	})      
+});
+
+</script>
+
+</body>
+</html>
+</html>

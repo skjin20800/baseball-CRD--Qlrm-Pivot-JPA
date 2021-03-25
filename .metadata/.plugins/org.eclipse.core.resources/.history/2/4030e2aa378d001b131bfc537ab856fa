@@ -1,0 +1,21 @@
+package com.jkb.baseball.web.dto.team;
+
+import com.jkb.baseball.domain.stadium.Stadium;
+import com.jkb.baseball.domain.team.Team;
+
+import lombok.Data;
+
+@Data
+public class TeamReqDto {
+	
+	private String teamName;
+	private Stadium stadium;
+
+	
+	public Team toEntity() {
+		return Team.builder()
+				.teamName(teamName)
+				.stadium(stadium)
+				.build();		
+	}
+}

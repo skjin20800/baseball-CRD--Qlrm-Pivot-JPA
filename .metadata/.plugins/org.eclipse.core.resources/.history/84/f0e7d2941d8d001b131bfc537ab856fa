@@ -1,0 +1,14 @@
+package com.jkb.baseball.web.dto.player;
+
+import com.jkb.baseball.domain.team.Team;
+
+public class PlayerReqDto {
+		
+	private String playerName;
+	private String position;
+	private Team team;
+	
+	public Player toEntity() {
+		
+	}
+}

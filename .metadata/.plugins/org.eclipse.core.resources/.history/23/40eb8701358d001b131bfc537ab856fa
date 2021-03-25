@@ -1,0 +1,31 @@
+package com.jkb.baseball.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.jkb.baseball.domain.player.Player;
+import com.jkb.baseball.domain.stadium.Stadium;
+import com.jkb.baseball.domain.stadium.StadiumRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class StadiumService {
+	
+	private StadiumRepository stadiumRepository;
+	
+	@Transactional
+	public List<Stadium> 야구장목록(){
+		return stadiumRepository.findAll();
+	}
+	
+	@Transactional
+	public void 야구장등록(Long id,Stadium stadium){
+		stadiumRepository.save(stadium);
+	}
+	
+
+}

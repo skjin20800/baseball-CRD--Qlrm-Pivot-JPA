@@ -1,0 +1,5 @@
+package com.jkb.baseball.domain.player;
+
+public class Player {
+
+}

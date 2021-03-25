@@ -1,0 +1,40 @@
+package com.jkb.baseball.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.jkb.baseball.service.StadiumService;
+import com.jkb.baseball.web.dto.player.PlayerReqDto;
+import com.jkb.baseball.web.dto.stadium.StadiumReqDto;
+
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor
+public class StadiumController {
+
+	private StadiumService stadiumService;
+	
+	@GetMapping("/stadium")
+	public String StadiumList(Model model) {
+//		List<Player> players = playerService.선수목록();
+//		model.addAttribute(players);
+		return "playerList";
+	}
+	
+	@GetMapping("/stadiumForm")
+	public String StadiumForm(Model model) {
+		return "playerSave";
+	}	
+	
+	@PostMapping("/stadium")
+	public String StadiumSave(@RequestBody StadiumReqDto stadiumReqDto) {
+		System.out.println("실행됨111"+playerReqDto);
+		stadiumService.야구장등록(playerReqDto.toEntity());
+		return "playerList";
+	}
+	
+}

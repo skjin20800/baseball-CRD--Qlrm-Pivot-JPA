@@ -1,0 +1,13 @@
+package com.jkb.baseball.web.dto.stadium;
+
+import lombok.Data;
+
+@Data
+public class StadiumReqDto {
+	
+	private String stadiumName;
+	private String team;
+	
+	
+}
+

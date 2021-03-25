@@ -1,0 +1,27 @@
+package com.jkb.baseball.web;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.jkb.baseball.domain.player.Player;
+import com.jkb.baseball.service.PlayerService;
+
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor
+public class PlayerController {
+
+	private PlayerService playerService;
+	
+	@GetMapping("/player")
+	public String Stadium(Model model) {
+		List<Player> players = playerService.선수목록();
+		model.addAttribute(players);
+		return "stadium";
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.jkb.baseball.web;
+
+public class StadiumController {
+
+}

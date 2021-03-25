@@ -1,0 +1,5 @@
+package com.jkb.baseball.web.dto.team;
+
+public class TeamReqDto {
+
+}

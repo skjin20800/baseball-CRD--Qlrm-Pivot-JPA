@@ -1,0 +1,12 @@
+package com.jkb.baseball.domain.stadium;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+
+public interface StadiumRepository extends JpaRepository<Stadium, Long>{
+
+	// 댓글 좋아요 검사
+	Stadium findByStadium(String stadiumName);
+	
+}

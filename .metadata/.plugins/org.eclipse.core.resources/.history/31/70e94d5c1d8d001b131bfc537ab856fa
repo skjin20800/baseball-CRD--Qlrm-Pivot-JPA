@@ -1,0 +1,5 @@
+package com.jkb.baseball.web.dto.player;
+
+public class PlayerReqDto {
+
+}

@@ -1,0 +1,44 @@
+package com.jkb.baseball.web;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.jkb.baseball.domain.player.Player;
+import com.jkb.baseball.service.PlayerService;
+import com.jkb.baseball.web.dto.player.PlayerReqDto;
+
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor
+public class PlayerController {
+
+	private PlayerService playerService;
+	
+	@GetMapping("/player")
+	public String PlayerList(Model model) {
+		List<Player> players = playerService.선수목록();
+		model.addAttribute(players);
+		return "playerList";
+	}
+	
+	@GetMapping("/playerForm")
+	public String PlayerForm(Model model) {
+		return "playerSave";
+	}	
+	
+	@PostMapping("/player/{id}")
+	public String PlayerSave(@PathVariable Long id,@RequestBody PlayerReqDto playerReqDto) {
+		System.out.println("실행됨 : " +id);
+		System.out.println("실행됨 : " +playerReqDto);
+		playerService.선수등록(id,playerReqDto.toEntity());
+		return "playerList";
+	}
+	
+}

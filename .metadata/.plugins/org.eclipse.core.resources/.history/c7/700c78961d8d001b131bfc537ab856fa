@@ -1,0 +1,21 @@
+package com.jkb.baseball.web.dto.player;
+
+import com.jkb.baseball.domain.player.Player;
+import com.jkb.baseball.domain.team.Team;
+
+import lombok.Builder;
+
+public class PlayerReqDto {
+		
+	private String playerName;
+	private String position;
+	private Team team;
+	
+	public Player toEntity() {
+		return Player.builder()
+				.playerName(playerName)
+				.position(position)
+				.team(team)
+				.build();		
+	}
+}

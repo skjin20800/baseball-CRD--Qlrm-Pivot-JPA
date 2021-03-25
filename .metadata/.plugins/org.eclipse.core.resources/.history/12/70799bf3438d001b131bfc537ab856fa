@@ -1,0 +1,35 @@
+package com.jkb.baseball.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.jkb.baseball.domain.player.Player;
+import com.jkb.baseball.domain.player.PlayerRepository;
+import com.jkb.baseball.domain.team.Team;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class PlayerService {
+	
+	private final PlayerRepository playerRepository;
+	
+	@Transactional
+	public List<Player> 선수목록(){
+		return playerRepository.findAll();
+	}
+	
+	@Transactional
+	public int 선수등록(Long id,Player player){		
+		Player playerEntity = playerRepository.findByPlayerName(player.getPlayerName());
+		if(playerEntity != null) {return -1;}
+		else {
+			playerRepository.mPlayerSave(player.getPlayerName(),player.getPosition(), id);	 
+			return 1;
+		}
+	}
+	
+}
